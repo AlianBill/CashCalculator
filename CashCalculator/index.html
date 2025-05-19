@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistika výdajů</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Sidebar navigace -->
+    <nav class="sidebar">
+      <h2>📊 Statistika výdajů</h2>
+      <ul>
+        <li><a href="#">🏠 Domů</a></li>
+        <li><a href="#">📈 Statistiky</a></li>
+        <li><a href="#">💳 Balanc</a></li>
+        <li><a href="#">⚙️ Nastavení</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hlavní obsah -->
+    <main class="content">
+      <header>
+        <h1>Vítejte!</h1>
+        <p>Dostupný zůstatek: <span id="balance"></span></p>
+      </header>
+
+    <!-- <section class="chart-section">
+      <h2>Rozdělení výdajů podle kategorií</h2>
+      <svg id="pieChart" width="200" height="200" viewBox="0 0 200 200"></svg>
+  </section>
+  
+  <div id="chartLegend" class="legend"></div> -->
+
+    <!-- 📈 Statistiky – přehled podle měsíce -->
+    <section id="statsPage" style="display: none;">
+      <h2>📈 Statistiky</h2>
+    
+      <!-- Výběr měsíce -->
+      <label for="monthSelect">Vyber měsíc:</label>
+      <select id="monthSelect"></select>
+    
+      <!-- Přepínač příjmy / výdaje -->
+      <div class="toggle-type">
+        <button id="showExpensesBtn" class="active">💸 Výdaje</button>
+        <button id="showIncomesBtn">💰 Příjmy</button>
+      </div>
+    
+      <!-- Kontejner pro grafy -->
+      <div class="charts-wrapper">
+        <!-- Koláčový graf -->
+        <div class="chart-container">
+          <h3 id="pieTitle">Výdaje podle kategorií</h3>
+          <svg id="statsPieChart" width="200" height="200" viewBox="0 0 200 200"></svg>
+          <div id="statsLegend" class="legend"></div>
+        </div>
+    
+        <!-- Sloupcový graf -->
+        <div class="chart-container">
+          <h3 id="barTitle">Výdaje po dnech</h3>
+          <canvas id="statsBarChart" width="400" height="200"></canvas>
+
+          <div class="bar-legend" id="barLegendContainer"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⚖️ Balanc -->
+    <section id="balancPage" style="display: none;">
+      <h2>📊 Balanc</h2>
+    
+      <div class="balanc-summary">
+        <div class="balanc-box income-box">
+          <h3>Příjmy</h3>
+          <p id="totalIncome">0 Kč</p>
+        </div>
+        <div class="balanc-box expense-box">
+          <h3>Výdaje</h3>
+          <p id="totalExpense">0 Kč</p>
+        </div>
+      </div>
+    
+      <div class="balanc-progress">
+        <h3>Progres výdajů</h3>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+        <p id="progressLabel">0%</p>
+      </div>
+    
+      <div class="balanc-top">
+        <h3>Největší transakce</h3>
+        <ul id="topTransactions"></ul>
+      </div>
+    </section>
+    
+
+    <section id="settingsPage" style="display: none;">
+      <h2>⚙️ Nastavení</h2>
+    
+      <!-- Přidání kategorie -->
+      <div class="settings-section">
+        <h3>📁 Přidat novou kategorii</h3>
+        <input type="text" id="newCategoryName" placeholder="Název kategorie">
+        <div id="iconPicker" class="icon-picker">
+          <label>Vyberte ikonu:</label>
+          <div id="iconOptions" class="icon-options"></div>
+        </div>
+        <input type="hidden" id="newCategoryIcon">
+        <button id="addCategoryBtn">➕ Přidat kategorii</button>
+      </div>
+    
+      <!-- Seznam kategorií -->
+      <div class="settings-section">
+        <h3>📋 Kategorie</h3>
+        <ul id="categoryList" class="category-list"></ul>
+      </div>
+    
+      <!-- Import / Export -->
+      <div class="settings-section">
+        <h3>🔄 Import / Export</h3>
+        <button id="exportCategoriesBtn">⬇️ Export do JSON</button>
+        <input type="file" id="importCategoriesInput" accept=".json">
+      </div>
+    
+      <!-- Smazání všeho -->
+      <div class="settings-section danger-zone">
+        <h3>⚠️ Smazat vše</h3>
+        <button id="clearCategoriesBtn">🗑️ Smazat všechny kategorie</button>
+      </div>
+    </section>
+    
+
+
+    <!-- Poslední transakce -->
+    <section class="transactions">
+      <h2>Moje transakce</h2>
+      <div class="filters">
+        <label for="categoryFilter">Kategorie:</label>
+        <select id="categoryFilter">
+          <option value="all">Všechny</option>
+          <option value="food">🍔 Jídlo</option>
+          <option value="transport">🚗 Doprava</option>
+          <option value="shopping">🛒 Nákupy</option>
+          <option value="salary">💰 Výplata</option>
+        </select>
+      
+        <label for="typeFilter">Typ:</label>
+        <select id="typeFilter">
+          <option value="all">Vše</option>
+          <option value="income">Příjmy</option>
+          <option value="expense">Výdaje</option>
+        </select>
+      </div>
+      <ul id="transactionList"></ul>
+      <div id="paginationControls"></div>
+    </section>
+
+    <!-- Tlačítko pro přidání transakce -->
+    <button id="addTransactionBtn">➕ Přidat transakci</button>
+
+    <button id="exportCsvBtn">⬇️ Exportovat do CSV</button>
+
+
+    <!-- Modální okno -->
+    <div id="transactionModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Přidat transakci</h2>
+
+        <label for="amount">Částka:</label>
+        <input type="number" id="amount" placeholder="Zadejte částku">
+
+        <label for="type">Typ:</label>
+        <select id="type">
+          <option value="income">💰 Příjem</option>
+          <option value="expense">🛒 Výdaj</option>
+        </select>
+        
+        <label for="category">Kategorie:</label>
+        <select id="category">
+          <option value="food">🍔 Jídlo</option>
+          <option value="transport">🚗 Doprava</option>
+          <option value="shopping">🛒 Nákupy</option>
+          <option value="salary">💰 Výplata</option>
+        </select>
+
+        <label for="date">Datum:</label>
+        <input type="date" id="date" max="">
+
+        <button id="saveTransaction">Uložit</button>
+        <button id="cancelTransaction">Zrušit</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
