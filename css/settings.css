@@ -1,0 +1,130 @@
+/* ⚙️ Nastavení stránky */
+#settingsPage {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  /* 📁 Výběr ikony */
+  .icon-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  
+  .icon-options button {
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 4px 8px;
+    transition: 0.2s;
+  }
+  
+  .icon-options button.selected {
+    border-color: #007bff;
+    background-color: #eef6ff;
+  }
+  
+  /* 📦 Sekce */
+  .settings-section {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .settings-section h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+  }
+  
+  .settings-section input[type="text"],
+  .settings-section input[type="file"] {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .settings-section button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: 0.2s;
+
+    transition: transform 0.3s ease;
+    -webkit-transition: transform 0.3s ease;
+    -moz-transition: transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+  }
+  
+  .settings-section button:hover {
+    background-color: #0e4711;
+    transform: scale(1.2) rotate(5deg);
+    -webkit-transform: scale(1.2) rotate(5deg);
+    -moz-transform: scale(1.2) rotate(5deg);
+    -o-transform: scale(1.2) rotate(5deg);
+  }
+  
+  #exportCategoriesBtn {
+    margin-bottom: 20px;
+  }
+  
+  /* ⚠️ Nebezpečná zóna */
+  .danger-zone button {
+    background-color: #e74c3c;
+  }
+  
+  .danger-zone button:hover {
+    background-color: #c0392b;
+  }
+  
+  /* 📋 Seznam kategorií */
+  .category-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .category-list li {
+    background: #f9f9f9;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .category-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .category-actions button {
+    background: #ddd;
+    color: #333;
+    font-size: 13px;
+    margin-left: 5px;
+  }
+  
+  .category-actions button:hover {
+    background: #bbb;
+  }
+  
