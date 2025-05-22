@@ -1,0 +1,123 @@
+/* ⚖️ Balanc sekce */
+#balancPage {
+    animation: fadeInChart 0.4s ease;
+  }
+  
+  .balanc-summary {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .balanc-box {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .income-box {
+    border-left: 6px solid #2ecc71;
+  }
+  
+  .expense-box {
+    border-left: 6px solid #e74c3c;
+  }
+  
+  .balanc-box h3 {
+    margin-bottom: 8px;
+    color: #34495e;
+  }
+  
+  .balanc-box p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  /* 📊 Progres výdajů */
+  .balanc-progress {
+    border-radius: 6px;
+    max-width: 650px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .progress-bar {
+    background: #e0e0e0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease, background-color 0.4s ease;
+    border-radius: 6px;
+  }
+  
+  #progressLabel {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* 🔝 Top transakce */
+  .balanc-top {
+    text-align: center;
+  }
+  
+  #topTransactions {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .top-transaction-card {
+    background: white;
+    border-left: 6px solid #4CAF50;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeInUp 0.4s ease both;
+  }
+  
+  .top-transaction-card.expense {
+    border-left-color: #e74c3c;
+  }
+  
+  .top-transaction-left {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .top-transaction-amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .top-transaction-category {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .top-transaction-date {
+    font-size: 13px;
+    color: #aaa;
+  }
+  

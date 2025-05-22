@@ -1,0 +1,137 @@
+/* 📊 Statistiky – grafy, legendy, přepínače */
+
+#statsPage {
+    animation: fadeInChart 0.4s ease;
+  }
+  
+  .toggle-type {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  
+  .toggle-type button {
+    background: #ecf0f1;
+    border: 2px solid #4CAF50;
+    color: #2c3e50;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .toggle-type button.active {
+    background: #4CAF50;
+    color: white;
+  }
+  
+  #monthSelect {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    margin: 10px auto;
+    display: block;
+    max-width: 300px;
+  }
+  
+  .charts-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    max-width: 100%;
+    text-align: center;
+    animation: fadeInChart 0.4s ease both;
+  }
+  
+  .chart-container h3 {
+    font-size: 20px;
+    color: #34495e;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+  
+  .legend,
+  .bar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .legend-item,
+  .bar-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f4f4f4;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+  
+  .legend-color,
+  .bar-legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  
+  /* 🎯 Responsivita */
+  
+  @media (max-width: 768px) {
+    .charts-wrapper {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+  
+    .chart-container {
+      width: 80%;
+      padding: 10px;
+    }
+  
+    #statsPieChart,
+    #statsBarChart {
+      width: 100% !important;
+      height: auto;
+    }
+  
+    .legend,
+    .bar-legend {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .legend-item,
+    .bar-legend-item {
+      margin: 5px 10px;
+    }
+  
+    .toggle-type {
+      gap: 10px;
+      margin: 15px 0;
+    }
+  
+    .toggle-type button {
+      flex: 1 1 45%;
+    }
+  }
+  
