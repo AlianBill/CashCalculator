@@ -43,9 +43,14 @@ window.addEventListener("popstate", () => {
 });
 
 if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/js/sw.js").then(reg => {
+  const path = `${location.pathname.replace(/\/[^\/]*$/, '')}/js/sw.js`;
+
+  navigator.serviceWorker.register(path)
+    .then(reg => {
       console.log("Service Worker zaregistrován:", reg.scope);
-    }).catch(err => {
+    })
+    .catch(err => {
       console.log("Chyba při registraci Service Workeru:", err);
     });
-  }
+}
+
