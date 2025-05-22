@@ -36,10 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSidebarNavigation();
   setupMainEventListeners();
 
+  const currentPath = window.location.hash.replace(/^#/, "") || "/";
+  showSectionByPath(currentPath);
 });
 
-window.addEventListener("popstate", () => {
-  showSectionByPath(location.pathname);
+window.addEventListener("hashchange", () => {
+  const path = window.location.hash.replace(/^#/, "");
+  showSectionByPath(path);
 });
 
 if ("serviceWorker" in navigator) {
@@ -53,4 +56,3 @@ if ("serviceWorker" in navigator) {
       console.log("Chyba při registraci Service Workeru:", err);
     });
 }
-
