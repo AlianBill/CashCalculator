@@ -1,10 +1,13 @@
 const CACHE_NAME = "vydaje-cache-v1";
+const BASE = self.location.pathname.replace(/\/sw\.js$/, "");
+
 const urlsToCache = [
-    "/",
-    "/index.html",
-    "/css/style.css",
-    "/js/script.js"
+    `${BASE}/`,
+    `${BASE}/index.html`,
+    `${BASE}/css/style.css`,
+    `${BASE}/js/script.js`
 ];
+
 
 // Instalace
 self.addEventListener("install", function(event) {
