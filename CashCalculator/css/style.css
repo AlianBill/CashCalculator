@@ -1,0 +1,923 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+  
+  /* 🌟 Sidebar (navigace) */
+  .sidebar {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 220px;
+    height: fit-content;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 12px;
+  }
+  
+  .sidebar a {
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 500;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  
+  .sidebar a:hover {
+    background: #ecf0f1;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  /* 🌟 Header */
+  header {
+    background: #2ecc71;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+  }
+  
+  #balance {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  /* 🌟 Tlačítka */
+  button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  #exportCsvBtn {
+    background: #2196F3;
+    margin-top: 10px;
+  }
+  
+  #saveTransaction {
+    background: #4CAF50;
+  }
+  
+  #cancelTransaction {
+    background: #FF5722;
+  }
+  
+
+  .filters {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  
+  .filters label {
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  .filters select {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.2s;
+  }
+  
+  .filters select:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+
+  /* 🌟 Transakce */
+  .transactions {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+
+  
+  #transactionList {
+    margin-top: 20px;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .transactions li {
+    background: white;
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .transaction-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .transaction-left .category-icon {
+    font-size: 22px;
+  }
+  
+  .transaction-left .category-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .transaction-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  
+  .transactions span {
+    font-weight: bold;
+  }
+
+  .transaction-amount.amount-income {
+    color: #2ecc71;
+  }
+  
+  .transaction-amount.amount-expense {
+    color: #e74c3c;
+  }
+  
+  .transactions button {
+    background: #e74c3c;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .transactions li.income {
+    border-left: 6px solid #2ecc71;
+  }
+  
+  .transactions li.expense {
+    border-left: 6px solid #e74c3c;
+  }
+  
+  .transactions button:hover {
+    background: #c0392b;
+  }
+
+  .transaction-item {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  #paginationControls {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  #paginationControls button {
+    background-color: #ffffff;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  #paginationControls button:hover:not(:disabled) {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  #paginationControls button:disabled {
+    background-color: #e0e0e0;
+    color: #888;
+    border-color: #ccc;
+    cursor: default;
+  }
+
+
+  /* 🌟 Modální okno */
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Когда модалка активна */
+  .modal.show {
+    display: flex;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1000;  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+  }
+
+
+  .modal-content h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  .modal-content label {
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2c3e50;
+  }
+  
+  .modal-content input,
+  .modal-content select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fdfdfd;
+    transition: 0.2s;
+    margin-top: 4px;
+  }
+  
+  .modal-content input:focus,
+  .modal-content select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background: #fff;
+  }
+
+  #saveTransaction {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+  
+  #cancelTransaction {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  .modal button {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  .modal .close {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    font-size: 22px;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .modal .close:hover {
+    color: #000;
+  }
+
+  #monthSelect {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    margin: 10px auto;
+    display: block;
+    max-width: 300px;
+  }
+
+  .chart-container {
+    animation: fadeInChart 0.4s ease both;
+  }
+  
+  @keyframes fadeInChart {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .chart-container h3 {
+    font-size: 20px;
+    color: #34495e;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 8px;
+  }
+
+
+  
+  /* 📊 Chart */
+  .chart-section {
+    text-align: center;
+    margin: 30px auto;
+  }
+  
+  #pieChart {
+    margin: 0 auto;
+    display: block;
+  }
+  
+  #barChart {
+    margin: 20px auto;
+    display: block;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  /* 📌 Legendy */
+  .legend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+  }
+  
+  .legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  /* ✅ Ostatní */
+  .filtered-transactions {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .filtered-transactions li {
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* 📱 Mobilní rozvržení */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 10px;
+    }
+  
+    .sidebar ul {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+    }
+  
+    .sidebar h2 {
+      display: none;
+    }
+  
+    .content {
+      margin-left: 0;
+      padding: 15px;
+    }
+  
+    .charts {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .charts-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .chart-container {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .chart-container h3 {
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #2c3e50;
+    }
+    
+    .bar-legend,
+    .legend {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .bar-legend-item,
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      background: #f4f4f4;
+      padding: 5px 10px;
+      border-radius: 6px;
+    }
+    
+  
+    .chart {
+      padding: 20px;
+    }
+  
+
+    button {
+      width: 100%;
+    }
+  
+    .modal-content {
+      width: 90%;
+    }
+  }
+  
+
+  .toggle-type {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+  }
+  
+  .toggle-type button {
+    background: #ecf0f1;
+    border: 2px solid #4CAF50;
+    color: #2c3e50;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .toggle-type button.active {
+    background: #4CAF50;
+    color: white;
+  }
+  
+  .charts-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .bar-legend {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .bar-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .bar-legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .charts-wrapper {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+  
+    .chart-container {
+      width: 80%;
+      padding: 10px;
+    }
+  
+    #statsPieChart,
+    #statsBarChart {
+      width: 100% !important;
+      height: auto;
+    }
+  
+    .legend,
+    .bar-legend {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .legend-item,
+    .bar-legend-item {
+      margin: 5px 10px;
+    }
+  
+    #monthSelect {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px auto;
+    }
+  
+    .toggle-type {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+  
+    .toggle-type button {
+      flex: 1 1 45%;
+    }
+  }
+  
+
+
+  #balancPage {
+    animation: fadeInChart 0.4s ease;
+  }
+  
+  .balanc-summary {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .balanc-box {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .income-box {
+    border-left: 6px solid #2ecc71;
+  }
+  
+  .expense-box {
+    border-left: 6px solid #e74c3c;
+  }
+  
+  .balanc-box h3 {
+    margin-bottom: 8px;
+    color: #34495e;
+  }
+  
+  .balanc-box p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .balanc-progress {
+    border-radius: 6px;
+    max-width: 650px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .progress-bar {
+    background: #e0e0e0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    transition: width 0.5s ease, background-color 0.4s ease;
+    border-radius: 6px;
+  }
+  
+  #progressLabel {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .balanc-top {
+    text-align: center;
+  }
+  
+  #topTransactions {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .top-transaction-card {
+    background: white;
+    border-left: 6px solid #4CAF50;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeInUp 0.4s ease both;
+  }
+  
+  .top-transaction-card.expense {
+    border-left-color: #e74c3c;
+  }
+  
+  .top-transaction-left {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .top-transaction-amount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .top-transaction-category {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .top-transaction-date {
+    font-size: 13px;
+    color: #aaa;
+  }
+  
+  #topTransactions li {
+    background: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+  }
+
+  /* ⚙️ Nastavení */
+#settingsPage {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.icon-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.icon-options button {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: 0.2s;
+}
+
+.icon-options button.selected {
+  border-color: #007bff;
+  background-color: #eef6ff;
+}
+
+.settings-section {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.settings-section h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.settings-section input[type="text"],
+.settings-section input[type="file"] {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.settings-section button {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: 0.2s;
+}
+
+.settings-section button:hover {
+  background-color: #45a049;
+}
+
+#exportCategoriesBtn {
+  margin-bottom: 20px;
+}
+
+.danger-zone button {
+  background-color: #e74c3c;
+}
+
+.danger-zone button:hover {
+  background-color: #c0392b;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  background: #f9f9f9;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-actions button {
+  background: #ddd;
+  color: #333;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+.category-actions button:hover {
+  background: #bbb;
+}
+
+  
+  
