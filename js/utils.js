@@ -21,24 +21,26 @@ function formatDate(dateStr) {
     return [...defaultCategories, ...userCategories];
   }
 
-  function setupSidebarNavigation() {
-    document.querySelectorAll(".sidebar a").forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const href = link.getAttribute("href");
-        history.pushState({}, "", href);
-        showSectionByPath(href);
-      });
+const BASE_PATH = "/" + window.location.pathname.split("/")[1];
+
+function setupSidebarNavigation() {
+  document.querySelectorAll(".sidebar a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      history.pushState({}, "", BASE_PATH + href);
+      showSectionByPath(href);
     });
-  }
+  });
+}
 
-  
-
-  
 function showSectionByPath(path) {
+  // Удаляем BASE_PATH из начала пути
+  const cleanPath = path.replace(BASE_PATH, "") || "/";
+
   document.querySelectorAll("main section").forEach(sec => sec.style.display = "none");
 
-  switch (path) {
+  switch (cleanPath) {
     case "/":
     case "/home":
       document.querySelector(".transactions").style.display = "block";
@@ -57,9 +59,9 @@ function showSectionByPath(path) {
   }
 }
 
-  
-  function toggleStatsButtons() {
-    document.getElementById("showExpensesBtn").classList.toggle("active", currentStatsType === "expense");
-    document.getElementById("showIncomesBtn").classList.toggle("active", currentStatsType === "income");
-  }
+function toggleStatsButtons() {
+  document.getElementById("showExpensesBtn").classList.toggle("active", currentStatsType === "expense");
+  document.getElementById("showIncomesBtn").classList.toggle("active", currentStatsType === "income");
+}
+
   
